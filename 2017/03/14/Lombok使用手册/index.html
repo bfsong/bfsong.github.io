@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="教程,lombok,java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Lombok是一个能让你少写代码的Java库。本文简单介绍了Lombok的常用功能，更多功能可以去Lombok官网查看。  声明：以下所有示例代码均来自lombok官方网站。  安装到IDEEclipse &amp;amp; STS双击lombok.jar或运行以下命令1java -jar lombok.jar 会启动安装向导，如下图所示点击“Install/Update”即可。 IDEA在插件中心搜索l">
+<meta name="keywords" content="教程,lombok,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lombok使用手册">
+<meta property="og:url" content="http://bfsong.github.io/2017/03/14/Lombok使用手册/index.html">
+<meta property="og:site_name" content="baofeng.song">
+<meta property="og:description" content="Lombok是一个能让你少写代码的Java库。本文简单介绍了Lombok的常用功能，更多功能可以去Lombok官网查看。  声明：以下所有示例代码均来自lombok官方网站。  安装到IDEEclipse &amp;amp; STS双击lombok.jar或运行以下命令1java -jar lombok.jar 会启动安装向导，如下图所示点击“Install/Update”即可。 IDEA在插件中心搜索l">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jnb.ociweb.com/jnb/jnbJan2010_files/jnbJan2010-LombokInstaller.png">
+<meta property="og:updated_time" content="2018-02-13T03:23:48.905Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lombok使用手册">
+<meta name="twitter:description" content="Lombok是一个能让你少写代码的Java库。本文简单介绍了Lombok的常用功能，更多功能可以去Lombok官网查看。  声明：以下所有示例代码均来自lombok官方网站。  安装到IDEEclipse &amp;amp; STS双击lombok.jar或运行以下命令1java -jar lombok.jar 会启动安装向导，如下图所示点击“Install/Update”即可。 IDEA在插件中心搜索l">
+<meta name="twitter:image" content="http://jnb.ociweb.com/jnb/jnbJan2010_files/jnbJan2010-LombokInstaller.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://bfsong.github.io/2017/03/14/Lombok使用手册/"/>
+
+
+
+
+
+  <title>Lombok使用手册 | baofeng.song</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">baofeng.song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">终生学习实践者</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bfsong.github.io/2017/03/14/Lombok使用手册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="baofeng.song">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="baofeng.song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lombok使用手册</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-14T15:59:06+08:00">
+                2017-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Lombok是一个能让你少写代码的Java库。本文简单介绍了Lombok的常用功能，更多功能可以去<a href="https://projectlombok.org/index.html" target="_blank" rel="noopener">Lombok官网</a>查看。</p>
+<blockquote>
+<p>声明：以下所有示例代码均来自lombok官方网站。</p>
+</blockquote>
+<h2 id="安装到IDE"><a href="#安装到IDE" class="headerlink" title="安装到IDE"></a>安装到IDE</h2><h3 id="Eclipse-amp-STS"><a href="#Eclipse-amp-STS" class="headerlink" title="Eclipse &amp; STS"></a>Eclipse &amp; STS</h3><p>双击<code>lombok.jar</code>或运行以下命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar lombok.jar</span><br></pre></td></tr></table></figure></p>
+<p>会启动安装向导，如下图所示<br><img src="http://jnb.ociweb.com/jnb/jnbJan2010_files/jnbJan2010-LombokInstaller.png" alt="@lombok安装图"><br>点击“Install/Update”即可。</p>
+<h3 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h3><p>在插件中心搜索<code>lombok</code>，然后在搜索结果中选择<code>Lombok Plugin</code>，再点击右侧的<code>Install</code>按钮安装即可。<br>安装完成后，在<code>Build,Execution,Deployment &gt; Compiler &gt; Annotation Processors</code>设置画面中选中<code>Enable annotation processing</code>。</p>
+<h2 id="安装到项目"><a href="#安装到项目" class="headerlink" title="安装到项目"></a>安装到项目</h2><h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://mvnrepository.com/artifact/org.projectlombok/lombok</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">group</span>: <span class="string">'org.projectlombok'</span>, name: <span class="string">'lombok'</span>, version: <span class="string">'1.16.14'</span></span><br></pre></td></tr></table></figure>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="NonNull"><a href="#NonNull" class="headerlink" title="@NonNull"></a>@NonNull</h3><p>你可以在方法或类型的构造方法的参数前添加<code>@NonNull</code>，这样就可以不用写参数为Null的检查代码了。<br>也可以用在字段定义上</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.NonNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NonNullExample</span> <span class="keyword">extends</span> <span class="title">Something</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">NonNullExample</span><span class="params">(@NonNull Person person)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">"Hello"</span>);</span><br><span class="line">    <span class="keyword">this</span>.name = person.getName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Cleanup"><a href="#Cleanup" class="headerlink" title="@Cleanup"></a>@Cleanup</h3><p>自动调用<code>close()</code>方法来释放资源。不过从Java 7开始有了<a href="http://www.ituring.com.cn/article/9288" target="_blank" rel="noopener"><code>TWR</code></a>，感觉这个注解用处不大了。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Cleanup;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CleanupExample</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="meta">@Cleanup</span> InputStream in = <span class="keyword">new</span> FileInputStream(args[<span class="number">0</span>]);</span><br><span class="line">    <span class="meta">@Cleanup</span> OutputStream out = <span class="keyword">new</span> FileOutputStream(args[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10000</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> r = in.read(b);</span><br><span class="line">      <span class="keyword">if</span> (r == -<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">      out.write(b, <span class="number">0</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Getter-Setter"><a href="#Getter-Setter" class="headerlink" title="@Getter / @Setter"></a>@Getter / @Setter</h3><p>从此以后再也不用写<code>getXX()</code>和<code>setXX()</code>方法了。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.Getter;</span><br><span class="line"><span class="keyword">import</span> lombok.Setter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetterSetterExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Getter</span> <span class="meta">@Setter</span> <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Setter</span>(AccessLevel.PROTECTED) <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.format(<span class="string">"%s (age: %d)"</span>, name, age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ToString"><a href="#ToString" class="headerlink" title="@ToString"></a>@ToString</h3><p>为一个类型自动重写<code>toString()</code>方法。默认会返回类型名称，以及每一个字段的值，使用逗号分隔。</p>
+<ul>
+<li>设置<code>includeFieldName=true</code>让输出内容更清晰明确，同时也增加了输出内容的长度。</li>
+<li>默认情况下，所有的非静态字段都会输出。可以设置<code>exclude</code>属性来排除不想输出的字段，还可以设置<code>of</code>属性的值来明确的指定想要输出的字段。</li>
+<li>通过设置<code>callSuper=true</code>，可以包含父类型的<code>toString()</code>输出结果，这在继承了其它类型的时候很有用。</li>
+</ul>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ToString</span>(exclude=<span class="string">"id"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STATIC_VAR = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> Shape shape = <span class="keyword">new</span> Square(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.getName();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToString</span>(callSuper=<span class="keyword">true</span>, includeFieldNames=<span class="keyword">true</span>)</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> width, height;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.width = width;</span><br><span class="line">      <span class="keyword">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="EqualsAndHashCode"><a href="#EqualsAndHashCode" class="headerlink" title="@EqualsAndHashCode"></a>@EqualsAndHashCode</h3><p>自动为类型重写<code>equals()</code>和<code>hashCode()</code>方法。默认情况下会使用到所有的非静态字段和非<code>transient</code>字段（添加了<code>transient</code>修饰符的字段不会被持久化，常用于密码等不能或不需要持久化的字段）。可以设置<code>exclude</code>属性来排除不想输出的字段，还可以设置<code>of</code>属性的值来明确的指定想要输出的字段。<br>在继承自<code>java.lang.Object</code>的类型上设置<code>callSuper=true</code>时编译会出错。在继承自其它类型时，如果没有设置<code>callSuper=true</code>在编译时会有警告。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"><span class="keyword">import</span> lombok.EqualsAndHashCode;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EqualsAndHashCode</span>(exclude=&#123;<span class="string">"id"</span>, <span class="string">"shape"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsAndHashCodeExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">int</span> transientVar = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> score;</span><br><span class="line">  <span class="keyword">private</span> Shape shape = <span class="keyword">new</span> Square(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@EqualsAndHashCode</span>(callSuper=<span class="keyword">true</span>)</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> width, height;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.width = width;</span><br><span class="line">      <span class="keyword">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="NoArgsConstructor-RequiredArgsConstructor和-AllArgsConstructor"><a href="#NoArgsConstructor-RequiredArgsConstructor和-AllArgsConstructor" class="headerlink" title="@NoArgsConstructor, @RequiredArgsConstructor和@AllArgsConstructor"></a>@NoArgsConstructor, @RequiredArgsConstructor和@AllArgsConstructor</h3><p><code>@NoArgsConstructor</code>会生成一个无参数的构造方法。 对于定义了<code>final</code>字段的类型，需要使用<code>@NoArgsConstructor(force = true)</code>，这样所有的<code>final</code>字段都会使用<code>0/false/null</code>初始化，否则会在编译时出错。此时需要注意的是，<strong>添加了<code>@NonNull</code>注解的字段，不会自动生成检查或赋值的代码</strong>。<br><code>@RequiredArgsConstructor</code>生成一个包含所有需要初始化的字段为参数的构造方法。所有的<code>final</code>字段都有一个参数，所有使用了<code>@NonNull</code>注解又没有初始化过的字段也有一个参数。参数的顺序与字段在类型中定义的先后顺序相同。<br><code>@AllArgsConstructor</code>生成一个包含了类型中定义的全部字段做为参数的构造方法。<br>以上三个注解都有一个<code>staticName</code>属性，使用这个属性会生成私有的构造方法，然后添加一个指定名称的静态工厂方法，推荐的名称是<code>of</code>。这样就可以使用<code>MapEntry.of(&quot;foo&quot;, 5)</code>这样的方式来创建一个新的<code>MapEntry</code>实例了。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.NonNull;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>(staticName = <span class="string">"of"</span>)</span><br><span class="line"><span class="meta">@AllArgsConstructor</span>(access = AccessLevel.PROTECTED)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructorExample</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> x, y;</span><br><span class="line">  <span class="meta">@NonNull</span> <span class="keyword">private</span> T description;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NoArgsConstructor</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NoArgsExample</span> </span>&#123;</span><br><span class="line">    <span class="meta">@NonNull</span> <span class="keyword">private</span> String field;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Data"><a href="#Data" class="headerlink" title="@Data"></a>@Data</h3><p>集成了<code>@ToString</code>、<code>@EqualsAndHashCode</code>、所有字段的<code>@Getter</code>、所有非<code>final</code>字段的<code>@Setter</code>和<code>@RequiredArgsConstructor</code>。<br>大部分情况下，只使用<code>@Data</code>注解就够用了。</p>
+<h3 id="Log"><a href="#Log" class="headerlink" title="@Log"></a>@Log</h3><p>可以在任何类型上使用此注解生成一个名称为<code>log</code>的字段。此字段的类型有以下可选项：</p>
+<ul>
+<li><code>@CommonsLog</code> - org.apache.commons.logging.Log</li>
+<li><code>@JBossLog</code> - org.jboss.logging.Logger</li>
+<li><code>@Log</code> - java.util.logging.Logger</li>
+<li><code>@Log4j</code> - org.apache.log4j.Logger</li>
+<li><code>@Log4j2</code> - org.apache.logging.log4j.Logger</li>
+<li><code>@Slf4j</code> - org.slf4j.Logger</li>
+<li><code>@XSlf4j</code> - org.slf4j.ext.XLogger</li>
+</ul>
+<p>可以设置<code>topic</code>属性来修改logger的名称，例如：<code>@Log(topic=&quot;reporting&quot;)</code></p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.extern.java.Log;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Log</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    log.error(<span class="string">"Something's wrong here"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogExampleOther</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    log.error(<span class="string">"Something else is wrong here"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@CommonsLog</span>(topic=<span class="string">"CounterLog"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogExampleCategory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">    log.error(<span class="string">"Calling the 'CounterLog' with a message"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h3><p>和<code>@Data</code>类似，不同的是默认所有的字段都会加上<code>private</code>和<code>final</code>修饰符，会生成<code>getXX()</code>方法，不会生成<code>setXX()</code>方法，类型本身也会加上<code>final</code>修饰符，会生成<code>toString()</code>、<code>equals()</code>和<code>hashCode()</code>方法，还会生成一个包含所有字段（不包含字段定义时已经初始化了的）作为参数的构造方法。<br>实际上<code>@Value</code>是<code>final</code>、<code>@ToString</code>、 <code>@EqualsAndHashCode</code>、<code>@AllArgsConstructor</code>、<code>@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)</code>和<code>@Getter</code>的简写形式。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.NonFinal;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Value;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Wither;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Value</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValueExample</span> </span>&#123;</span><br><span class="line">  String name;</span><br><span class="line">  <span class="meta">@Wither</span>(AccessLevel.PACKAGE) <span class="meta">@NonFinal</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">double</span> score;</span><br><span class="line">  <span class="keyword">protected</span> String[] tags;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToString</span>(includeFieldNames=<span class="keyword">true</span>)</span><br><span class="line">  <span class="meta">@Value</span>(staticConstructor=<span class="string">"of"</span>)</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Exercise</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    T value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Builder"><a href="#Builder" class="headerlink" title="@Builder"></a>@Builder</h3><p>快速实现<a href="https://quanke.gitbooks.io/design-pattern-java/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-Builder%20Pattern.html" target="_blank" rel="noopener">建造者模式</a>。<br>其中<code>@Singular</code>注解只能使用在集合类型字段或参数上。此时不会生成对应的<code>setXX()</code>方法，而会生成两个<code>addXX()</code>方法，一个用来添加单个元素，另一个用来添加另一个集合中的所有元素。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Builder;</span><br><span class="line"><span class="keyword">import</span> lombok.Singular;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BuilderExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="meta">@Singular</span> <span class="keyword">private</span> Set&lt;String&gt; occupations;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="SneakyThrows"><a href="#SneakyThrows" class="headerlink" title="@SneakyThrows"></a>@SneakyThrows</h3><p>使用<code>@SneakyThrows</code>注解，就可以不用再写<code>try ... catch...</code>了。这是一个有争议的功能，使用时一定要当心。通常在以下两种情况时使用：</p>
+<ul>
+<li>过于严格的接口。<br>比如<code>Runnable</code>，不论在<code>run()</code>方法中产生了什么异常，代码有没有对此异常进行过处理，异常最后都会被传递到线程的未捕获异常句柄（unhandled exception handler）。</li>
+<li>不可能会出错的时候。<br>比如<code>new String(someByteArray, &quot;UTF-8&quot;);</code>,这个语句声明了会抛出<code>UnsupportedEncodingException</code>，可是在JVM中UTF-8始终是可用的，也就是说不可能会抛出<code>UnsupportedEncodingException</code>。</li>
+</ul>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.SneakyThrows;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SneakyThrowsExample</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">  <span class="meta">@SneakyThrows</span>(UnsupportedEncodingException.class)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">utf8ToString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(bytes, <span class="string">"UTF-8"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@SneakyThrows</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Throwable();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不使用<code>@SneakyThrows</code>的等效代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Lombok;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SneakyThrowsExample</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">utf8ToString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> String(bytes, <span class="string">"UTF-8"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">      <span class="keyword">throw</span> Lombok.sneakyThrow(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Throwable();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">      <span class="keyword">throw</span> Lombok.sneakyThrow(t);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Synchronized"><a href="#Synchronized" class="headerlink" title="@Synchronized"></a>@Synchronized</h3><p>相比<code>synchronized</code>修饰符更安全。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Synchronized;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Object readLock = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Synchronized</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"world"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Synchronized</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">answerToLife</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Synchronized</span>(<span class="string">"readLock"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"bar"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不使用<code>@Synchronized</code>的等效代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object $LOCK = <span class="keyword">new</span> Object[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Object $lock = <span class="keyword">new</span> Object[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Object readLock = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>($LOCK) &#123;</span><br><span class="line">      System.out.println(<span class="string">"world"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">answerToLife</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>($lock) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(readLock) &#123;</span><br><span class="line">      System.out.println(<span class="string">"bar"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Getter-lazy-true"><a href="#Getter-lazy-true" class="headerlink" title="@Getter(lazy=true)"></a>@Getter(lazy=true)</h3><p>此注解会生成一个<code>getXX()</code>方法，此方法只会在第一次被调用时计算且只计算这一次，之后会把结果缓存下来。这在代码消耗CPU或内存较大的时候很有用。编写的代码不需要考虑线程安全问题，lombok会帮你解决这个问题。</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Getter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetterLazyExample</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Getter</span>(lazy=<span class="keyword">true</span>) <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span>[] cached = expensive();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span>[] expensive() &#123;</span><br><span class="line">    <span class="keyword">double</span>[] result = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">1000000</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">      result[i] = Math.asin(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不使用<code>@Getter(lazy=true)</code>的等效代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetterLazyExample</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> java.util.concurrent.AtomicReference&lt;java.lang.Object&gt; cached = <span class="keyword">new</span> java.util.concurrent.AtomicReference&lt;java.lang.Object&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">double</span>[] getCached() &#123;</span><br><span class="line">    java.lang.Object value = <span class="keyword">this</span>.cached.get();</span><br><span class="line">    <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span>(<span class="keyword">this</span>.cached) &#123;</span><br><span class="line">        value = <span class="keyword">this</span>.cached.get();</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">final</span> <span class="keyword">double</span>[] actualValue = expensive();</span><br><span class="line">          value = actualValue == <span class="keyword">null</span> ? <span class="keyword">this</span>.cached : actualValue;</span><br><span class="line">          <span class="keyword">this</span>.cached.set(value);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">double</span>[])(value == <span class="keyword">this</span>.cached ? <span class="keyword">null</span> : value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span>[] expensive() &#123;</span><br><span class="line">    <span class="keyword">double</span>[] result = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">1000000</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">      result[i] = Math.asin(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://lrwinx.github.io/2017/03/04/%E7%BB%86%E6%80%9D%E6%9E%81%E6%81%90-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E5%86%99java%E5%90%97/" target="_blank" rel="noopener">细思极恐-你真的会写java吗</a> （建议每个java工程师都认真读一遍）<br><a href="http://deepinmind.iteye.com/blog/2041907" target="_blank" rel="noopener">Lombok: Java开发的利器</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/lombok/" rel="tag"># lombok</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/RestTemplate获取复杂JSON类型返回值/" rel="next" title="RestTemplate获取复杂JSON类型返回值">
+                <i class="fa fa-chevron-left"></i> RestTemplate获取复杂JSON类型返回值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/02/Spring Boot使用MyBatis连接多数据源/" rel="prev" title="Spring Boot使用MyBatis连接多数据源">
+                Spring Boot使用MyBatis连接多数据源 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="baofeng.song" />
+            
+              <p class="site-author-name" itemprop="name">baofeng.song</p>
+              <p class="site-description motion-element" itemprop="description">学习,记录,思考</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/bfsong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装到IDE"><span class="nav-number">1.</span> <span class="nav-text">安装到IDE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Eclipse-amp-STS"><span class="nav-number">1.1.</span> <span class="nav-text">Eclipse &amp; STS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA"><span class="nav-number">1.2.</span> <span class="nav-text">IDEA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装到项目"><span class="nav-number">2.</span> <span class="nav-text">安装到项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle"><span class="nav-number">2.1.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven"><span class="nav-number">2.2.</span> <span class="nav-text">Maven</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NonNull"><span class="nav-number">3.1.</span> <span class="nav-text">@NonNull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cleanup"><span class="nav-number">3.2.</span> <span class="nav-text">@Cleanup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-Setter"><span class="nav-number">3.3.</span> <span class="nav-text">@Getter / @Setter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ToString"><span class="nav-number">3.4.</span> <span class="nav-text">@ToString</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EqualsAndHashCode"><span class="nav-number">3.5.</span> <span class="nav-text">@EqualsAndHashCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoArgsConstructor-RequiredArgsConstructor和-AllArgsConstructor"><span class="nav-number">3.6.</span> <span class="nav-text">@NoArgsConstructor, @RequiredArgsConstructor和@AllArgsConstructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-number">3.7.</span> <span class="nav-text">@Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log"><span class="nav-number">3.8.</span> <span class="nav-text">@Log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value"><span class="nav-number">3.9.</span> <span class="nav-text">@Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Builder"><span class="nav-number">3.10.</span> <span class="nav-text">@Builder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SneakyThrows"><span class="nav-number">3.11.</span> <span class="nav-text">@SneakyThrows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number">3.12.</span> <span class="nav-text">@Synchronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-lazy-true"><span class="nav-number">3.13.</span> <span class="nav-text">@Getter(lazy=true)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">baofeng.song</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
