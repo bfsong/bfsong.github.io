@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Archlinu安装（一） 说明： 详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/2016.12.01/archlinux-2016.">
+<meta name="description" content="Archlinu安装（一）说明：详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/ 下载安装光盘镜像文件。也可以从别的镜像网站下载（如阿里">
 <meta name="keywords" content="archlinux,linux,安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArchLinux安装（一）">
 <meta property="og:url" content="http://bfsong.github.io/2017/01/19/ArchLinux安装（一）/index.html">
 <meta property="og:site_name" content="baofeng.song">
-<meta property="og:description" content="Archlinu安装（一） 说明： 详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/2016.12.01/archlinux-2016.">
+<meta property="og:description" content="Archlinu安装（一）说明：详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/ 下载安装光盘镜像文件。也可以从别的镜像网站下载（如阿里">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-13T03:23:48.905Z">
+<meta property="og:updated_time" content="2018-04-11T08:33:32.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArchLinux安装（一）">
-<meta name="twitter:description" content="Archlinu安装（一） 说明： 详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/2016.12.01/archlinux-2016.">
+<meta name="twitter:description" content="Archlinu安装（一）说明：详细的安装说明可以在archlinux wiki查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合archlinux wiki一起使用。 准备安装介质下载安装文件从 http://mirrors.163.com/archlinux/iso/ 下载安装光盘镜像文件。也可以从别的镜像网站下载（如阿里">
 
 
 
@@ -98,9 +98,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -320,8 +320,8 @@
       
 
       
-        <h1 id="Archlinu安装（一）"><a href="#Archlinu安装（一）" class="headerlink" title="Archlinu安装（一）"></a>Archlinu安装（一）</h1><p><strong> 说明： </strong><br>详细的安装说明可以在<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">archlinux wiki</a>查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">archlinux wiki</a>一起使用。</p>
-<h2 id="准备安装介质"><a href="#准备安装介质" class="headerlink" title="准备安装介质"></a>准备安装介质</h2><h3 id="下载安装文件"><a href="#下载安装文件" class="headerlink" title="下载安装文件"></a>下载安装文件</h3><p>从 <a href="http://mirrors.163.com/archlinux/iso/2016.12.01/archlinux-2016.12.01-dual.iso" target="_blank" rel="noopener">http://mirrors.163.com/archlinux/iso/2016.12.01/archlinux-2016.12.01-dual.iso</a> 下载安装光盘镜像文件。<br>也可以从别的镜像网站下载（如阿里云开源镜像服务器）。</p>
+        <h1 id="Archlinu安装（一）"><a href="#Archlinu安装（一）" class="headerlink" title="Archlinu安装（一）"></a>Archlinu安装（一）</h1><p><strong>说明：</strong><br>详细的安装说明可以在<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">archlinux wiki</a>查看，这里列出的安装步骤是不完整的，写这些的目的是补充一些wiki中没有或分散的内容，以帮助初学者少花时间，所以一定要配合<a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">archlinux wiki</a>一起使用。</p>
+<h2 id="准备安装介质"><a href="#准备安装介质" class="headerlink" title="准备安装介质"></a>准备安装介质</h2><h3 id="下载安装文件"><a href="#下载安装文件" class="headerlink" title="下载安装文件"></a>下载安装文件</h3><p>从 <a href="http://mirrors.163.com/archlinux/iso/" target="_blank" rel="noopener">http://mirrors.163.com/archlinux/iso/</a> 下载安装光盘镜像文件。<br>也可以从别的镜像网站下载（如<a href="http://mirrors.aliyun.com/archlinux/iso/" target="_blank" rel="noopener">阿里云开源镜像服务器</a>）。</p>
 <h3 id="制作USB启动盘"><a href="#制作USB启动盘" class="headerlink" title="制作USB启动盘"></a>制作USB启动盘</h3><p>准备一个U盘，请先备份好里面的数据，以下操作会清除U盘中的数据。<br>在Linux系统中，执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress &amp;&amp; sync</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p><em>注意：</em></p>
@@ -340,8 +340,18 @@
 <p><em>推荐使用USBwriter。以上工具的详细说明可以参考<a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media" target="_blank" rel="noopener">这里</a>。</em></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>所有的磁盘操作都默认为安装到系统中第一块硬盘，即<code>/dev/sda</code>，如果实际安装时不是安装到第一块硬盘上，一定记得把命令中的<code>sda</code>替换成实际的硬盘编号。</p>
 <h3 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h3><p>使用之前制作的启动盘引导系统，直到看到<code>#</code>提示符。</p>
+<p><strong>连接网络</strong></p>
+<p>运行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ping archlinux.org</span><br></pre></td></tr></table></figure></p>
+<p>确认网络已经连接上了，否则需要先配置网络连接。</p>
+<p>有线网络一般情况下此时已经可以连接了，无线网络可以运行<code>wifi-menu</code>命令来连接。</p>
+<p>更详细的配置说明可以看：</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Network_configuration#Device_driver" target="_blank" rel="noopener">有线</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration" target="_blank" rel="noopener">无线</a></li>
+</ul>
 <p><strong>分区</strong></p>
-<p>使用<code>fdisk -l</code>查看系统分区现状，之后使用<code>fdisk /dev/sda</code>（记得把最后的a替换成实际的磁盘id）进行分区。<code>fdisk</code>的使用方法自行上网搜索即可。</p>
+<p>使用<code>fdisk -l</code>查看系统分区现状，之后使用<code>fdisk /dev/sdx</code>（记得把最后的a替换成实际的磁盘id）进行分区。<code>fdisk</code>的使用方法自行上网搜索即可。</p>
+<p>需要注意的是，分区表要使用<code>GPT</code>格式，fdisk进入后输入<code>g</code>即可创建一个新的<code>GPT</code>格式分区表。</p>
 <p>建议的分区方案：</p>
 <ol>
 <li><p>分两个区，500M给<code>/boot</code>，其余的都给<code>/</code><br>如：</p>
@@ -352,32 +362,50 @@
 </li>
 </ol>
 <p>其中500M大小的分区是用来做引导分区的，需要把分区类型更改为<code>EFI</code>或<code>FAT</code>。<br>在<code>fdisk</code>中，命令<code>t</code>可以更改分区类型，输入<code>t</code>后，选择要更改的分区号，接下来在询问分区类型时输入<code>ef</code>即表示修改成‘EFI’格式。</p>
+<blockquote>
+<p>分区可以参考<a href="https://wiki.archlinux.org/index.php/Partitioning" target="_blank" rel="noopener">Partitioning - ArchWiki</a></p>
+</blockquote>
 <p><strong>格式化</strong></p>
-<p>格式化boot分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.fat F32 /dev/sda1</span><br></pre></td></tr></table></figure></p>
+<p>格式化boot分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.fat -F32 /dev/sda1</span><br></pre></td></tr></table></figure></p>
 <p>格式化其它分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mkfs.ext4 /dev/sda2</span><br><span class="line"># mkfs.ext4 /dev/sda3</span><br></pre></td></tr></table></figure></p>
 <p><strong>挂载分区</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mount /dev/sda2 /mnt</span><br><span class="line"># mkdir /mnt/boot</span><br><span class="line"># mount /dev/sda1 /mnt/boot</span><br></pre></td></tr></table></figure>
 <p>如果分三个区，还要执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mkdir /mnt/home</span><br><span class="line"># mount /dev/sda3 /mnt/home</span><br></pre></td></tr></table></figure></p>
 <p>之后运行<code>lsblk</code>查看分区挂载情况。</p>
 <h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p><strong>选择镜像</strong></p>
-<p>运行<code>vim /etc/pacman.d/mirrorlist</code>命令，在最上增加两行，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.163.com/archlinux/$repo/os/$arch</span><br><span class="line">Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch</span><br></pre></td></tr></table></figure></p>
+<p>运行<code>vim /etc/pacman.d/mirrorlist</code>命令，在最上面增加两行，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.163.com/archlinux/$repo/os/$arch</span><br><span class="line">Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch</span><br></pre></td></tr></table></figure></p>
 <p><strong>安装base包</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base</span><br></pre></td></tr></table></figure>
-<p>这一步也可以把其它需要的软件包都安装上，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel vim sudo dhclient zsh gcc</span><br></pre></td></tr></table></figure></p>
-<p>其中dhclient一定要装，不然重启以后无法连接网络。</p>
-<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p><strong>Fstab</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>这一步也可以把其它需要的软件包都安装上，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel vim sudo networkmanager zsh</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>networkmanager</code>一定要装，不然重启以后无法连接网络。</p>
+<h3 id="系统设置"><a href="#系统设置" class="headerlink" title="系统设置"></a>系统设置</h3><p><strong>Fstab</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure></p>
 <p><strong>Chroot</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure></p>
 <p><strong>时区</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"></span><br><span class="line">#generate /etc/adjtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm /etc/localtime</span><br><span class="line">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"></span><br><span class="line">#generate /etc/adjtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
 <p><strong>Locale</strong></p>
-<p>修改<code>/etc/locale.gen</code>，把<code>en_US</code>、<code>zh_CN</code>和<code>zh_TW</code>开头的行前面的<code>#</code>全部删除。<br>然后运行<code>locale-gen</code><br>之后，运行<code>vim /etc/locale.conf</code>,输入以下内容，然后保存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure></p>
+<p>修改<code>/etc/locale.gen</code>，把<code>en_US</code>、<code>zh_CN</code>和<code>zh_TW</code>开头的行前面的<code>#</code>全部删除。<br>然后运行<code>locale-gen</code><br>之后，运行<code>vim /etc/locale.conf</code>,输入以下内容，然后保存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=us_EN.UTF-8</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这一步如果把语言设置为中文，在命令行中会显示乱码，所以先设置为英文，等以后把中文环境都安装配置好了再改成中文。</p>
+</blockquote>
 <p><strong>Hostname</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &lt;hostname&gt; &gt; /etc/hostname</span><br></pre></td></tr></table></figure></p>
 <p><strong>网络</strong></p>
-<p><a href="https://wiki.archlinux.org/index.php/Network_configuration#Network_managers" target="_blank" rel="noopener">网络设置</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+<p>有线网络到这一步重启后就可以通过DHCP自动获取IP了，无线网络还需要配置，具体方法可以看<a href="https://wiki.archlinux.org/index.php/Network_configuration#Network_managers" target="_blank" rel="noopener">网络设置</a></p>
 <p><strong>设置Root密码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure></p>
 <p><strong>安装Boot loader</strong></p>
-<p>安装grub<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S grub</span><br><span class="line"># grub-install --target=i386-pc /dev/sdx</span><br><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>安装grub</p>
+<p><strong>这里需要注意的是系统引导方式是<code>UEFI</code>还是<code>BIOS</code>，两者安装的包是不一样的。</strong></p>
+<p>运行命令<code>ls /sys/firmware/efi/efivars</code>，如果提示目录不存在，则系统引导方式是BIOS，否则是UEFI。</p>
+<ul>
+<li>BIOS</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S grub</span><br><span class="line"># grub-install --target=i386-pc /dev/sdx</span><br><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>UEFI</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S grub efibootmgr</span><br><span class="line"># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub</span><br><span class="line"># grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>至此，基本系统安装完成，重启电脑后就可以开始使用archlinux了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">umount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p><strong> 参考链接 </strong></p>
 <ul>
 <li>archlinux 安装指南 <a href="https://wiki.archlinux.org/index.php/Installation_guide" target="_blank" rel="noopener">英文</a> <a href="https://wiki.archlinux.org/index.php/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">中文</a></li>
@@ -506,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -519,7 +547,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -600,7 +628,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
