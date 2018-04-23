@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,安装,ArchLinux," />
+  <meta name="keywords" content="ArchLinux,linux,安装," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki)，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为">
-<meta name="keywords" content="linux,安装,ArchLinux">
+<meta name="description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为其">
+<meta name="keywords" content="ArchLinux,linux,安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArchLinux安装（二）">
 <meta property="og:url" content="http://bfsong.github.io/2018/04/10/ArchLinux安装（二）/index.html">
 <meta property="og:site_name" content="baofeng.song">
-<meta property="og:description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki)，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为">
+<meta property="og:description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为其">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-11T10:41:58.507Z">
+<meta property="og:updated_time" content="2018-04-12T02:09:22.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArchLinux安装（二）">
-<meta name="twitter:description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki)，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为">
+<meta name="twitter:description" content="ArchLinux安装（二）在上一篇ArchLinux安装（一）我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装X window。 系统管理详细的配置文档可以参考General recommendations (简体中文) - ArchWiki，这里只介绍我常用的配置。 添加用户和组现在系统中只有root用户，为了安全起见，日常操作应该使用普通用户登录。 添加新用户并为其">
 
 
 
@@ -320,8 +320,8 @@
       
 
       
-        <h1 id="ArchLinux安装（二）"><a href="#ArchLinux安装（二）" class="headerlink" title="ArchLinux安装（二）"></a>ArchLinux安装（二）</h1><p>在上一篇<a href="ArchLinux安装（一）.html">ArchLinux安装（一）</a>我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装<code>X window</code>。</p>
-<h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><p>详细的配置文档可以参考<a href="https://wiki.archlinux.org/index.php/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">General recommendations (简体中文) - ArchWiki</a>)，这里只介绍我常用的配置。</p>
+        <h1 id="ArchLinux安装（二）"><a href="#ArchLinux安装（二）" class="headerlink" title="ArchLinux安装（二）"></a>ArchLinux安装（二）</h1><p>在上一篇<a href="/2017/01/19/ArchLinux%E5%AE%89%E8%A3%85%EF%BC%88%E4%B8%80%EF%BC%89/">ArchLinux安装（一）</a>我们安装了基本的Archlinux系统，这一篇我们要进行一些基本配置并安装<code>X window</code>。</p>
+<h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><p>详细的配置文档可以参考<a href="https://wiki.archlinux.org/index.php/General_recommendations_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">General recommendations (简体中文) - ArchWiki</a>，这里只介绍我常用的配置。</p>
 <h3 id="添加用户和组"><a href="#添加用户和组" class="headerlink" title="添加用户和组"></a>添加用户和组</h3><p>现在系统中只有<code>root</code>用户，为了安全起见，日常操作应该使用普通用户登录。</p>
 <p>添加新用户并为其设置密码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># useradd -m -g wheel -s /bin/bash username</span><br><span class="line"># passwd username</span><br></pre></td></tr></table></figure>
@@ -388,7 +388,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S lxde</span><br></pre></td></tr></table></figure>
 <p>在询问选择时全部接受默认值即可。</p>
 <p>启用GUI<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable lxdm</span><br><span class="line">sudo systemctl start lxdm</span><br></pre></td></tr></table></figure></p>
-<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p>中文化的更多内容请参考<a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">Arch Linux Localization (简体中文) - ArchWiki</a>#.E7.BB.88.E7.AB.AF.E4.B8.AD.E6.96.87.E6.94.AF.E6.8C.81_2)。</p>
+<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p>中文化的更多内容请参考<a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)" target="_blank" rel="noopener">Arch Linux Localization (简体中文) - ArchWiki</a>。</p>
 <h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>安装字体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts wqy-zenhei wqy-bitmapfont ttf-arphic-ukai ttf-arphic-uming opendesktop-fonts ttf-hannom</span><br></pre></td></tr></table></figure></p>
 <p>安装的过程中可能会卡一会儿，耐心等待即可。</p>
 <h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><p>Linux中常用的输入法有<code>Fcitx</code>和<code>IBus</code>，这里只介绍<code>Fcitx</code>。</p>
@@ -432,11 +432,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/ArchLinux/" rel="tag"># ArchLinux</a>
+          
             <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/安装/" rel="tag"># 安装</a>
-          
-            <a href="/tags/ArchLinux/" rel="tag"># ArchLinux</a>
           
         </div>
       
@@ -542,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -555,7 +555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
